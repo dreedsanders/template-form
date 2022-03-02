@@ -1,0 +1,32 @@
+<h2>Create Athlete</h2>
+
+<div class= "form-group" >
+  <form #athleteForm = "ngForm" (ngSubmit)="createAthlete(athleteForm.value)">
+    <div class="athlete-name">
+      <input type ="text" required placeholder="Athlete Name" name="athleteName" #athleteName = "ngModel" [(ngModel)] = "athlete.name">
+    </div>
+    <div *ngIf="athleteName.errors">
+        Name is Mandatory
+    </div>
+    <div class="athlete-sport">
+      <input type="text" required placeholder="Athlete Sport" name="athleteSport" #athleteSport = "ngModel" [(ngModel)]= "athlete.sport">
+    </div>
+    <div *ngIf="athleteSport.errors">
+      Sport is Mandatory
+    </div>
+    <div class="athlete-team">
+      <select name="athleteTeam" [(ngModel)]= "athlete.team" >
+        <option value="" >Select Team </option>
+        <option *ngFor="let team of teams" [ngValue]="team">{{team}}</option>
+      </select>
+    </div>
+    <div>
+      <input class= "athlete-confirm" required type="checkbox" name="athleteConfirm" [(ngModel)]= "confirmed">Athlete is accurate!
+    </div>
+    <button type = "submit" [disabled]="!confirmed">Create Athlete</button>
+  </form>
+</div>
+
+<h4>Current Athlete : {{athlete | json}}</h4>
+
+<h4>Confirmed : {{confirmed}}</h4>

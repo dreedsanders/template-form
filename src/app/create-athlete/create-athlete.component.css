@@ -1,0 +1,8 @@
+.athlete-name .ng-valid,
+.athlete-sport .ng-valid{
+  background-color: green;
+}
+.athlete-name .ng-invalid,
+.athlete-sport .ng-invalid {
+  background-color: red;
+}
